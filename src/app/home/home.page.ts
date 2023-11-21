@@ -62,29 +62,33 @@ export class HomePage {
 
   calcular() {
     if (this.operador_selecionado == "+" && this.segundo_elemento != "") {
-      this.resultado = (parseFloat(this.primeiro_elemento) + parseFloat(this.segundo_elemento)).toString();
+      let aux_adicao = (parseFloat(this.primeiro_elemento) + parseFloat(this.segundo_elemento));
+      this.resultado = aux_adicao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
     } else if (this.operador_selecionado == "-" && this.segundo_elemento != "") {
-      this.resultado = (parseFloat(this.primeiro_elemento) - parseFloat(this.segundo_elemento)).toString();
+      let aux_subtracao = (parseFloat(this.primeiro_elemento) - parseFloat(this.segundo_elemento))
+      this.resultado = aux_subtracao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
     } else if (this.operador_selecionado == "*" && this.segundo_elemento != "") {
-      this.resultado = (parseFloat(this.primeiro_elemento) * parseFloat(this.segundo_elemento)).toString();
+      let aux_multicacao = (parseFloat(this.primeiro_elemento) * parseFloat(this.segundo_elemento))
+      this.resultado = aux_multicacao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
     } else if (this.operador_selecionado == "/" && this.segundo_elemento != "") {
-      this.resultado = (parseFloat(this.primeiro_elemento) / parseFloat(this.segundo_elemento)).toString();
+      let aux_divisao = (parseFloat(this.primeiro_elemento) / parseFloat(this.segundo_elemento))
+      this.resultado = aux_divisao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
     } else if (this.operador_selecionado == "^2") {
-      let aux = parseFloat(this.primeiro_elemento);
-      this.resultado = Math.pow(aux, 2).toString();
+      let aux_expoente = parseFloat(this.primeiro_elemento);
+      this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
       this.resultado_concluido = true;
     } else if (this.operador_selecionado == "%") {
-      let aux = '100';
-      this.resultado = (parseFloat(this.primeiro_elemento) / parseFloat(aux)).toString();
+      let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
+      this.resultado = aux_porcentagem.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
     }
