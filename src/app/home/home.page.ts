@@ -15,7 +15,6 @@ export class HomePage {
   segundo_elemento: string = '';
   operador_selecionado: string = '';
   memoria: string = '';
-  terceiro_elemento: boolean = false;
 
   constructor() { }
 
@@ -106,7 +105,6 @@ export class HomePage {
       //quer dizer que o usuario digitou um operador
       //ou seja, ele que incrementar o resultado
       this.resultado_concluido = false;
-      this.terceiro_elemento = true;
       this.segundo_elemento = '';
       return true;
     }
