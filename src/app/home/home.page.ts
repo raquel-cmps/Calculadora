@@ -82,6 +82,17 @@ export class HomePage {
       this.resultado = Math.pow(aux, 2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
       this.resultado_concluido = true;
+    } else if (this.operador_selecionado == "%") {
+      let aux = '100';
+      this.resultado = (parseInt(this.primeiro_elemento) / parseInt(aux)).toString();
+      this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
+      this.resultado_concluido = true;
+    }
+    else if (this.operador_selecionado == "+/-") {
+      let aux = parseInt(this.primeiro_elemento);
+      this.resultado = (- aux).toString();
+      this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
+      this.resultado_concluido = true;
     }
 
   }
