@@ -41,11 +41,20 @@ export class HomePage {
 
   operador(valor: string) {
     if (!this.checa_operador || this.verificacao_nova_operacao() == true) {
+      this.operador_selecionado = valor;
       this.primeiro_elemento = this.resultado;
       this.resultado += valor;
       this.checa_operador = true;
       this.comeca_segundo_elemento = true;
-      this.operador_selecionado = valor;
+
+      if (this.operador_selecionado in Operadores_complexos) {
+        this.opercao_complexa();
+        /*let aux_expoente = parseFloat(this.primeiro_elemento);
+        this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
+        this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
+        this.primeiro_elemento = this.resultado;
+        */
+      }
     }
   }
 
@@ -90,14 +99,31 @@ export class HomePage {
       this.resultado = aux_porcentagem.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
-    }
-    else if (this.operador_selecionado == "+/-") {
+    } else if (this.operador_selecionado == "+/-") {
       let aux = parseFloat(this.primeiro_elemento);
       this.resultado = (- aux).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
       this.resultado_concluido = true;
     }
+  }
 
+  opercao_complexa() {
+    if (this.operador_selecionado == "^2") {
+      let aux_expoente = parseFloat(this.primeiro_elemento);
+      this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
+      this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
+      this.primeiro_elemento = this.resultado;
+    } else if (this.operador_selecionado == "%") {
+      let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
+      this.resultado = aux_porcentagem.toFixed(2).toString();
+      this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
+      this.primeiro_elemento = this.resultado;
+    } else if (this.operador_selecionado == "+/-") {
+      let aux = parseFloat(this.primeiro_elemento);
+      this.resultado = (- aux).toString();
+      this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
+      this.primeiro_elemento = this.resultado;
+    }
   }
 
   verificacao_nova_operacao(): boolean {
@@ -120,6 +146,12 @@ enum Operadores {
   '^2',    // 4
   '%',     // 5
   '+/-'    // 6
+}
+
+enum Operadores_complexos {
+  '^2',
+  '%',
+  '+/-'
 }
 
 
