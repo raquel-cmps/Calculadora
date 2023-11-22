@@ -1,9 +1,9 @@
 <ion-content [fullscreen]="true">
     <div id="container">
         <h3>{{memoria}}</h3>
-        <h1 class="res">{{resultado}}</h1>
+        <h1 id="res">{{resultado}}</h1>
         <ion-grid>
-            <ion-row>
+            <ion-row class="especial">
                 <ion-col>
                     <ion-button fill="clear" (click)="operador('%')">%</ion-button>
                 </ion-col>
@@ -27,7 +27,7 @@
                 <ion-col>
                     <ion-button fill="clear" (click)="digito('9')">9</ion-button>
                 </ion-col>
-                <ion-col>
+                <ion-col class="especial">
                     <ion-button fill="clear" (click)="operador('*')">x</ion-button>
                 </ion-col>
             </ion-row>
@@ -41,7 +41,7 @@
                 <ion-col>
                     <ion-button fill="clear" (click)="digito('6')">6</ion-button>
                 </ion-col>
-                <ion-col>
+                <ion-col class="especial">
                     <ion-button fill="clear" (click)="operador('-')">-</ion-button>
                 </ion-col>
             </ion-row>
@@ -55,7 +55,7 @@
                 <ion-col>
                     <ion-button fill="clear" (click)="digito('3')">3</ion-button>
                 </ion-col>
-                <ion-col>
+                <ion-col class="especial">
                     <ion-button fill="clear" (click)="operador('+')">+</ion-button>
                 </ion-col>
             </ion-row>
@@ -69,7 +69,7 @@
                 <ion-col>
                     <ion-button fill="clear" (click)="digito('.')">.</ion-button>
                 </ion-col>
-                <ion-col>
+                <ion-col class="especial">
                     <ion-button fill="clear" (click)="calcular()">=</ion-button>
                 </ion-col>
             </ion-row>

@@ -74,32 +74,38 @@ export class HomePage {
       this.resultado = aux_adicao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
-    } else if (this.operador_selecionado == "-" && this.segundo_elemento != "") {
+    }
+    else if (this.operador_selecionado == "-" && this.segundo_elemento != "") {
       let aux_subtracao = (parseFloat(this.primeiro_elemento) - parseFloat(this.segundo_elemento))
       this.resultado = aux_subtracao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
-    } else if (this.operador_selecionado == "*" && this.segundo_elemento != "") {
+    }
+    else if (this.operador_selecionado == "*" && this.segundo_elemento != "") {
       let aux_multicacao = (parseFloat(this.primeiro_elemento) * parseFloat(this.segundo_elemento))
       this.resultado = aux_multicacao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
-    } else if (this.operador_selecionado == "/" && this.segundo_elemento != "") {
+    }
+    else if (this.operador_selecionado == "/" && this.segundo_elemento != "") {
       let aux_divisao = (parseFloat(this.primeiro_elemento) / parseFloat(this.segundo_elemento))
       this.resultado = aux_divisao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
-    } else if (this.operador_selecionado == "^2") {
+    }
+    else if (this.operador_selecionado == "^2") {
       let aux_expoente = parseFloat(this.primeiro_elemento);
       this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
       this.resultado_concluido = true;
-    } else if (this.operador_selecionado == "%") {
+    }
+    else if (this.operador_selecionado == "%") {
       let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
       this.resultado = aux_porcentagem.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
-    } else if (this.operador_selecionado == "+/-") {
+    }
+    else if (this.operador_selecionado == "+/-") {
       let aux = parseFloat(this.primeiro_elemento);
       this.resultado = (- aux).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
@@ -113,12 +119,14 @@ export class HomePage {
       this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
       this.primeiro_elemento = this.resultado;
-    } else if (this.operador_selecionado == "%") {
+    }
+    else if (this.operador_selecionado == "%") {
       let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
       this.resultado = aux_porcentagem.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.primeiro_elemento = this.resultado;
-    } else if (this.operador_selecionado == "+/-") {
+    }
+    else if (this.operador_selecionado == "+/-") {
       let aux = parseFloat(this.primeiro_elemento);
       this.resultado = (- aux).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
