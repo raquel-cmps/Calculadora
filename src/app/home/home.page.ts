@@ -37,7 +37,7 @@ export class HomePage {
         if (this.resultado == "0") {
           this.resultado = valor;
         } else {
-          this.resultado = this.resultado + valor;
+          this.resultado += valor;
         }
       }
     }
@@ -53,6 +53,7 @@ export class HomePage {
       //chece se o ultimo elemento da string Resultado
       //é um operador, e caso seja, retira o operador
       //e concatena o novo
+      this.operador_selecionado = valor;
     } else if (this.operador_unico){
       return;
       //faz a verificacao se ja existe um operador
