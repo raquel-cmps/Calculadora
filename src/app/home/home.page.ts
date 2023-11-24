@@ -141,8 +141,12 @@ export class HomePage {
     if (this.operador_selecionado == "^") {
       let aux_expoente = parseFloat(this.primeiro_elemento);
       this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
-      this.memoria = this.primeiro_elemento + this.operador_selecionado;
+      //this.memoria = this.primeiro_elemento + this.operador_selecionado;
+      let base = this.primeiro_elemento
+      let expoente = 2;
+      this.memoria = `${base}<sup>${expoente}</sup>`;
       this.primeiro_elemento = this.resultado;
+      this.resultado_concluido = true;
       this.operador_unico = false;
     }
     else if (this.operador_selecionado == "%") {
@@ -151,6 +155,7 @@ export class HomePage {
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
       this.primeiro_elemento = this.resultado;
       this.operador_unico = false;
+      this.resultado_concluido = true;
     }
     else if (this.operador_selecionado == "+/-") {
       let aux = parseFloat(this.primeiro_elemento);
@@ -158,6 +163,7 @@ export class HomePage {
       this.memoria = this.primeiro_elemento + this.operador_selecionado;
       this.primeiro_elemento = this.resultado;
       this.operador_unico = false;
+      this.resultado_concluido = true;
     }
   }
 
