@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage {
 
   resultado: string = '0';
@@ -15,6 +16,9 @@ export class HomePage {
   segundo_elemento: string = '';
   operador_selecionado: string = '';
   memoria: string = '';
+  operador_unico: boolean = false;
+
+  test: string = 'Teste';
 
   constructor() { }
 
@@ -40,20 +44,32 @@ export class HomePage {
   }
 
   operador(valor: string) {
-    if (!this.checa_operador || this.verificacao_nova_operacao() == true) {
-      this.operador_selecionado = valor;
-      this.primeiro_elemento = this.resultado;
-      this.resultado += valor;
-      this.checa_operador = true;
-      this.comeca_segundo_elemento = true;
-
-      if (this.operador_selecionado in Operadores_complexos) {
-        this.opercao_complexa();
-        /*let aux_expoente = parseFloat(this.primeiro_elemento);
-        this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
-        this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
+    if(!this.operador_unico){
+      if (!this.checa_operador || this.verificacao_nova_operacao() == true) {
+        this.operador_selecionado = valor;
         this.primeiro_elemento = this.resultado;
-        */
+        this.resultado += valor;
+        this.checa_operador = true;
+        this.comeca_segundo_elemento = true;
+        this.operador_unico = true;
+  
+        if (this.operador_selecionado in Operadores_complexos) {
+          this.opercao_complexa();
+        }
+      }
+    } else {
+      this.resultado = this.resultado.slice(0, -1);
+      if (!this.checa_operador || this.verificacao_nova_operacao() == true){
+        this.operador_selecionado = valor;
+        this.primeiro_elemento = this.resultado;
+        this.resultado += valor;
+        this.checa_operador = true;
+        this.comeca_segundo_elemento = true;
+        this.operador_unico = true;
+
+        if (this.operador_selecionado in Operadores_complexos) {
+          this.opercao_complexa();
+        }
       }
     }
   }
@@ -66,6 +82,7 @@ export class HomePage {
     this.operador_selecionado = '';
     this.comeca_segundo_elemento = false;
     this.memoria = '';
+    this.operador_unico = false;
   }
 
   calcular() {
@@ -74,63 +91,73 @@ export class HomePage {
       this.resultado = aux_adicao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
+      this.operador_unico = false;
     }
     else if (this.operador_selecionado == "-" && this.segundo_elemento != "") {
       let aux_subtracao = (parseFloat(this.primeiro_elemento) - parseFloat(this.segundo_elemento))
       this.resultado = aux_subtracao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
+      this.operador_unico = false;
     }
     else if (this.operador_selecionado == "*" && this.segundo_elemento != "") {
       let aux_multicacao = (parseFloat(this.primeiro_elemento) * parseFloat(this.segundo_elemento))
       this.resultado = aux_multicacao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
+      this.operador_unico = false;
     }
     else if (this.operador_selecionado == "/" && this.segundo_elemento != "") {
       let aux_divisao = (parseFloat(this.primeiro_elemento) / parseFloat(this.segundo_elemento))
       this.resultado = aux_divisao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
+      this.operador_unico = false;
     }
-    else if (this.operador_selecionado == "^2") {
+    else if (this.operador_selecionado == "^") {
       let aux_expoente = parseFloat(this.primeiro_elemento);
       this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
       this.resultado_concluido = true;
+      this.operador_unico = false;
     }
     else if (this.operador_selecionado == "%") {
       let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
       this.resultado = aux_porcentagem.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.resultado_concluido = true;
+      this.operador_unico = false;
     }
     else if (this.operador_selecionado == "+/-") {
       let aux = parseFloat(this.primeiro_elemento);
       this.resultado = (- aux).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
       this.resultado_concluido = true;
+      this.operador_unico = false;
     }
   }
 
   opercao_complexa() {
-    if (this.operador_selecionado == "^2") {
+    if (this.operador_selecionado == "^") {
       let aux_expoente = parseFloat(this.primeiro_elemento);
       this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
       this.primeiro_elemento = this.resultado;
+      this.operador_unico = false;
     }
     else if (this.operador_selecionado == "%") {
       let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
       this.resultado = aux_porcentagem.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento + "=" + this.resultado;
       this.primeiro_elemento = this.resultado;
+      this.operador_unico = false;
     }
     else if (this.operador_selecionado == "+/-") {
       let aux = parseFloat(this.primeiro_elemento);
       this.resultado = (- aux).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + "=" + this.resultado;
       this.primeiro_elemento = this.resultado;
+      this.operador_unico = false;
     }
   }
 

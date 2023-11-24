@@ -1,18 +1,21 @@
 #container {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 10px;
+  right: 10px;
+  padding: 2rem 0.5rem;
   top: 50%;
   transform: translateY(-50%);
-  background-color: transparent;
+  background-color: #d1cccc;
+  border-radius: 20px;
 }
 
-#memoria {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
+.memoria {
+  font-family: 'Spartan', sans-serif;
+  font-weight: 500;
   color: #737270;
   text-align: right;
-  margin-right: 30px;
+  margin-right: 8%;
+  height: 25px;
 }
 
 ion-col {
@@ -20,20 +23,36 @@ ion-col {
 }
 
 ion-button {
+  font-family: 'Spartan', sans-serif;
+  font-weight: 700;
   width: 50px;
   height: 50px;
-  background-color: #B02E0C;
+  background-color: #e5e4e1;
   border-radius: 100%;
-  color: #C6D8D3;
+  color: #35352c;
+  box-shadow:inset 0 -0.25rem 0 #a69d91;
 }
 
 #res {
   font-family: 'Inter', sans-serif;
-  font-weight: 400;
+  font-weight: 700;
   text-align: right;
   padding-right: 8%;
+  color: #35352c;
 }
 
 .especial ion-button {
-  background-color: #EB4511;
+  font-family: 'Spartan', sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #377f86;
+  box-shadow:inset 0 -0.25rem 0 #1b5f65;
+}
+
+.igual ion-button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: #ca5502;
+  box-shadow:inset 0 -0.25rem 0 #893901;
 }
