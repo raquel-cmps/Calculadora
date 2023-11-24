@@ -18,9 +18,20 @@ export class HomePage {
   memoria: string = '';
   operador_unico: boolean = false;
 
-  test: string = 'Teste';
 
   constructor() { }
+
+  debug(){
+    console.log('Resultado: ' + this.resultado);
+    console.log('Primeiro El: ' + this.primeiro_elemento);
+    console.log('Segundo El: ' + this.segundo_elemento);
+    console.log('Operador: ' + this.operador_selecionado);
+    console.log('Memoria: ' + this.memoria);
+    console.log('ChecaOp: ' + this.checa_operador);
+    console.log('ComecaSegundo: ' + this.comeca_segundo_elemento);
+    console.log('ResultadoConcluido: ' + this.resultado_concluido);
+    console.log('OpUnico: ' + this.operador_unico);
+  }
 
   digito(valor: string) {
     if (this.resultado_concluido) {
@@ -67,6 +78,10 @@ export class HomePage {
         this.checa_operador = true;
         this.comeca_segundo_elemento = true;
         this.operador_unico = true;
+
+        this.segundo_elemento = '';
+        //precisa resetar o segundo elemento
+        //para que nao aconteca o bug de carregar digitos iguais
   
         if (this.operador_selecionado in Operadores_complexos) {
           this.operacao_complexa();
@@ -89,53 +104,36 @@ export class HomePage {
   calcular() {
     if (this.operador_selecionado == "+" && this.segundo_elemento != "") {
       let aux_adicao = (parseFloat(this.primeiro_elemento) + parseFloat(this.segundo_elemento));
-      this.resultado = aux_adicao.toFixed(2).toString();
+      this.resultado = aux_adicao.toString();
+      //this.resultado = aux_adicao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
     }
     else if (this.operador_selecionado == "-" && this.segundo_elemento != "") {
       let aux_subtracao = (parseFloat(this.primeiro_elemento) - parseFloat(this.segundo_elemento))
-      this.resultado = aux_subtracao.toFixed(2).toString();
+      this.resultado = aux_subtracao.toString();
+      //this.resultado = aux_subtracao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
     }
     else if (this.operador_selecionado == "*" && this.segundo_elemento != "") {
       let aux_multicacao = (parseFloat(this.primeiro_elemento) * parseFloat(this.segundo_elemento))
-      this.resultado = aux_multicacao.toFixed(2).toString();
+      this.resultado = aux_multicacao.toString();
+      //this.resultado = aux_multicacao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
     }
     else if (this.operador_selecionado == "/" && this.segundo_elemento != "") {
       let aux_divisao = (parseFloat(this.primeiro_elemento) / parseFloat(this.segundo_elemento))
-      this.resultado = aux_divisao.toFixed(2).toString();
+      this.resultado = aux_divisao.toString();
+      //this.resultado = aux_divisao.toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
     }
-    /*else if (this.operador_selecionado == "^") {
-      let aux_expoente = parseFloat(this.primeiro_elemento);
-      this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
-      this.memoria = this.primeiro_elemento + this.operador_selecionado;
-      this.resultado_concluido = true;
-      this.operador_unico = false;
-    }
-    else if (this.operador_selecionado == "%") {
-      let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
-      this.resultado = aux_porcentagem.toFixed(2).toString();
-      this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
-      this.resultado_concluido = true;
-      this.operador_unico = false;
-    }
-    else if (this.operador_selecionado == "+/-") {
-      let aux = parseFloat(this.primeiro_elemento);
-      this.resultado = (- aux).toString();
-      this.memoria = this.primeiro_elemento + this.operador_selecionado;
-      this.resultado_concluido = true;
-      this.operador_unico = false;
-    }*/
   }
 
   operacao_complexa() {
