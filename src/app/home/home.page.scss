@@ -1,34 +1,39 @@
 #container {
-  text-align: center;
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  background-color: transparent;
 }
 
+#memoria {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  color: #737270;
+  text-align: right;
+  margin-right: 30px;
+}
 
 ion-col {
-  background-color: transparent;
-  border: solid 1px black;
-  color: #fff;
   text-align: center;
-  border-radius: 10px;
 }
 
 ion-button {
-  width: 60px;
+  width: 50px;
   height: 50px;
-  background-color: #7E84F2;
-  border-radius: 35%;
+  background-color: #B02E0C;
+  border-radius: 100%;
   color: #C6D8D3;
 }
 
 #res {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
   text-align: right;
   padding-right: 8%;
 }
 
 .especial ion-button {
-  background-color: #525AF2;
+  background-color: #EB4511;
 }
