@@ -44,7 +44,21 @@ export class HomePage {
   }
 
   operador(valor: string) {
-    if(!this.operador_unico){
+    const Operadores_obj = Object.values(Operadores);
+    //criando um obj, pois nao consegui relacionar
+    //as strings do enum, com a string do resultado
+
+    if(Operadores_obj.includes(this.resultado.charAt(this.resultado.length - 1))){
+      this.resultado = this.resultado.slice(0, -1) + valor;
+      //chece se o ultimo elemento da string Resultado
+      //é um operador, e caso seja, retira o operador
+      //e concatena o novo
+    } else if (this.operador_unico){
+      return;
+      //faz a verificacao se ja existe um operador
+      //caso exista ele retorna a funcao, nao permitindo
+      //a adicao de outro operador
+    } else {
       if (!this.checa_operador || this.verificacao_nova_operacao() == true) {
         this.operador_selecionado = valor;
         this.primeiro_elemento = this.resultado;
@@ -54,21 +68,7 @@ export class HomePage {
         this.operador_unico = true;
   
         if (this.operador_selecionado in Operadores_complexos) {
-          this.opercao_complexa();
-        }
-      }
-    } else {
-      this.resultado = this.resultado.slice(0, -1);
-      if (!this.checa_operador || this.verificacao_nova_operacao() == true){
-        this.operador_selecionado = valor;
-        this.primeiro_elemento = this.resultado;
-        this.resultado += valor;
-        this.checa_operador = true;
-        this.comeca_segundo_elemento = true;
-        this.operador_unico = true;
-
-        if (this.operador_selecionado in Operadores_complexos) {
-          this.opercao_complexa();
+          this.operacao_complexa();
         }
       }
     }
@@ -114,7 +114,7 @@ export class HomePage {
       this.resultado_concluido = true;
       this.operador_unico = false;
     }
-    else if (this.operador_selecionado == "^") {
+    /*else if (this.operador_selecionado == "^") {
       let aux_expoente = parseFloat(this.primeiro_elemento);
       this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado;
@@ -134,10 +134,10 @@ export class HomePage {
       this.memoria = this.primeiro_elemento + this.operador_selecionado;
       this.resultado_concluido = true;
       this.operador_unico = false;
-    }
+    }*/
   }
 
-  opercao_complexa() {
+  operacao_complexa() {
     if (this.operador_selecionado == "^") {
       let aux_expoente = parseFloat(this.primeiro_elemento);
       this.resultado = Math.pow(aux_expoente, 2).toFixed(2).toString();
@@ -146,8 +146,8 @@ export class HomePage {
       let expoente = 2;
       this.memoria = `${base}<sup>${expoente}</sup>`;
       this.primeiro_elemento = this.resultado;
-      this.resultado_concluido = true;
       this.operador_unico = false;
+      this.resultado_concluido = true;
     }
     else if (this.operador_selecionado == "%") {
       let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
