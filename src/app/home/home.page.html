@@ -1,20 +1,36 @@
 <ion-content [fullscreen]="true">
     <div id="container">
-        <h3>{{memoria}}</h3>
+        <div id="memoria">
+            <h3 [innerHTML]="memoria"></h3>
+        </div>
         <h1 id="res">{{resultado}}</h1>
         <ion-grid>
+            <ion-row class="especial">
+                <ion-col>
+                    <ion-button fill="clear" (click)="operador('sqr')">&#8730;x</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button fill="clear" (click)="redefinir()">C</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button fill="clear" (click)="redefinirEntrada()">CE</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button fill="clear" (click)="deletar()">DEL</ion-button>
+                </ion-col>
+            </ion-row>
             <ion-row class="especial">
                 <ion-col>
                     <ion-button fill="clear" (click)="operador('%')">%</ion-button>
                 </ion-col>
                 <ion-col>
-                    <ion-button fill="clear" (click)="operador('^2')">x<sup>2</sup></ion-button>
+                    <ion-button fill="clear" (click)="operador('^')">x<sup>2</sup></ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button fill="clear" (click)="operador('@')"><sup>1</sup>/<sub>x</sub></ion-button>
                 </ion-col>
                 <ion-col>
                     <ion-button fill="clear" (click)="operador('/')">/</ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button fill="clear" (click)="redefinir()">CE</ion-button>
                 </ion-col>
             </ion-row>
             <ion-row>
@@ -69,7 +85,7 @@
                 <ion-col>
                     <ion-button fill="clear" (click)="digito('.')">.</ion-button>
                 </ion-col>
-                <ion-col class="especial">
+                <ion-col class="igual">
                     <ion-button fill="clear" (click)="calcular()">=</ion-button>
                 </ion-col>
             </ion-row>
