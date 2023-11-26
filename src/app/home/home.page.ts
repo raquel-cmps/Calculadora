@@ -157,12 +157,17 @@ export class HomePage {
       this.operador_unico = false;
     }
     else if (this.operador_selecionado == "/" && this.segundo_elemento != "") {
-      let aux_divisao = (parseFloat(this.primeiro_elemento) / parseFloat(this.segundo_elemento))
-      this.resultado = aux_divisao.toString();
-      //this.resultado = aux_divisao.toFixed(2).toString();
-      this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
-      this.resultado_concluido = true;
-      this.operador_unico = false;
+      if(parseFloat(this.segundo_elemento) === 0) {
+        this.memoria = "ERROR: Division by 0";
+        return 
+      } else {
+        let aux_divisao = (parseFloat(this.primeiro_elemento) / parseFloat(this.segundo_elemento))
+        this.resultado = aux_divisao.toString();
+        //this.resultado = aux_divisao.toFixed(2).toString();
+        this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
+        this.resultado_concluido = true;
+        this.operador_unico = false;
+      }
     }
   }
 
