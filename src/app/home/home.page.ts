@@ -186,6 +186,7 @@ export class HomePage {
       this.primeiro_elemento = this.resultado;
       this.operador_unico = false;
       this.resultado_concluido = true;
+      return;
     }
     else if (this.operador_selecionado == "%") {
       let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
@@ -194,6 +195,7 @@ export class HomePage {
       this.primeiro_elemento = this.resultado;
       this.operador_unico = false;
       this.resultado_concluido = true;
+      return;
     }
     else if (this.operador_selecionado == "+/-") {
       let aux = parseFloat(this.primeiro_elemento);
@@ -202,6 +204,7 @@ export class HomePage {
       this.primeiro_elemento = this.resultado;
       this.operador_unico = false;
       this.resultado_concluido = true;
+      return;
     }
     else if (this.operador_selecionado == 'sqr'){
       let aux_raizQuadrada = parseFloat(this.primeiro_elemento);
@@ -210,6 +213,7 @@ export class HomePage {
       this.primeiro_elemento = this.resultado;
       this.operador_unico = false;
       this.resultado_concluido = true;
+      return;
     }
     else if (this.operador_selecionado == '@'){
       let aux_fracao = parseFloat(this.primeiro_elemento);
@@ -218,6 +222,7 @@ export class HomePage {
       this.primeiro_elemento = this.resultado;
       this.operador_unico = false;
       this.resultado_concluido = true;
+      return;
     }
   }
 
