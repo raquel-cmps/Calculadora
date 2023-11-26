@@ -139,6 +139,7 @@ export class HomePage {
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
+      return;
     }
     else if (this.operador_selecionado == "-" && this.segundo_elemento != "") {
       let aux_subtracao = (parseFloat(this.primeiro_elemento) - parseFloat(this.segundo_elemento))
@@ -147,6 +148,7 @@ export class HomePage {
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
+      return;
     }
     else if (this.operador_selecionado == "*" && this.segundo_elemento != "") {
       let aux_multicacao = (parseFloat(this.primeiro_elemento) * parseFloat(this.segundo_elemento))
@@ -155,11 +157,12 @@ export class HomePage {
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
+      return;
     }
     else if (this.operador_selecionado == "/" && this.segundo_elemento != "") {
       if(parseFloat(this.segundo_elemento) === 0) {
         this.memoria = "ERROR: Division by 0";
-        return 
+        return; 
       } else {
         let aux_divisao = (parseFloat(this.primeiro_elemento) / parseFloat(this.segundo_elemento))
         this.resultado = aux_divisao.toString();
@@ -167,6 +170,7 @@ export class HomePage {
         this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
         this.resultado_concluido = true;
         this.operador_unico = false;
+        return;
       }
     }
   }
