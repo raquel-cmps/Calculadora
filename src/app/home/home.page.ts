@@ -115,12 +115,12 @@ export class HomePage {
   deletar(){
     const Operadores_obj = Object.values(Operadores);
 
-    if(this.resultado_concluido == true){
+    if(this.resultado_concluido){
       return;
     } else {
       if(Operadores_obj.includes(this.resultado.charAt(this.resultado.length -1))){
         return;
-      }else{
+      } else {
         if(this.comeca_segundo_elemento = true && this.segundo_elemento != ''){
           this.segundo_elemento = this.segundo_elemento.slice(0, -1);
           this.resultado = this.resultado.slice(0, -1);
@@ -141,7 +141,7 @@ export class HomePage {
       this.operador_unico = false;
       return;
     }
-    else if (this.operador_selecionado == "-" && this.segundo_elemento != "") {
+    if (this.operador_selecionado == "-" && this.segundo_elemento != "") {
       let aux_subtracao = (parseFloat(this.primeiro_elemento) - parseFloat(this.segundo_elemento))
       this.resultado = aux_subtracao.toString();
       //this.resultado = aux_subtracao.toFixed(2).toString();
@@ -150,7 +150,7 @@ export class HomePage {
       this.operador_unico = false;
       return;
     }
-    else if (this.operador_selecionado == "*" && this.segundo_elemento != "") {
+    if (this.operador_selecionado == "*" && this.segundo_elemento != "") {
       let aux_multicacao = (parseFloat(this.primeiro_elemento) * parseFloat(this.segundo_elemento))
       this.resultado = aux_multicacao.toString();
       //this.resultado = aux_multicacao.toFixed(2).toString();
@@ -159,7 +159,7 @@ export class HomePage {
       this.operador_unico = false;
       return;
     }
-    else if (this.operador_selecionado == "/" && this.segundo_elemento != "") {
+    if (this.operador_selecionado == "/" && this.segundo_elemento != "") {
       if(parseFloat(this.segundo_elemento) === 0) {
         this.memoria = "ERROR: Division by 0";
         return; 
@@ -188,7 +188,7 @@ export class HomePage {
       this.resultado_concluido = true;
       return;
     }
-    else if (this.operador_selecionado == "%") {
+    if (this.operador_selecionado == "%") {
       let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
       this.resultado = aux_porcentagem.toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
@@ -197,7 +197,7 @@ export class HomePage {
       this.resultado_concluido = true;
       return;
     }
-    else if (this.operador_selecionado == "+/-") {
+    if (this.operador_selecionado == "+/-") {
       let aux = parseFloat(this.primeiro_elemento);
       this.resultado = (- aux).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado;
@@ -206,7 +206,7 @@ export class HomePage {
       this.resultado_concluido = true;
       return;
     }
-    else if (this.operador_selecionado == 'sqr'){
+    if (this.operador_selecionado == 'sqr'){
       let aux_raizQuadrada = parseFloat(this.primeiro_elemento);
       this.resultado = Math.sqrt(aux_raizQuadrada).toString();
       this.memoria = `&#8730;${this.primeiro_elemento}`;
@@ -215,7 +215,7 @@ export class HomePage {
       this.resultado_concluido = true;
       return;
     }
-    else if (this.operador_selecionado == '@'){
+    if (this.operador_selecionado == '@'){
       let aux_fracao = parseFloat(this.primeiro_elemento);
       this.resultado = (1 / aux_fracao).toString();
       this.memoria = `<sup>1</sup>/<sub>${this.primeiro_elemento}</sub>`;
@@ -238,6 +238,7 @@ export class HomePage {
   }
 
 }
+
 enum Operadores {
   '+',     // 0
   '-',     // 1
