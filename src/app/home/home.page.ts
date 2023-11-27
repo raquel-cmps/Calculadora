@@ -177,7 +177,6 @@ export class HomePage {
     }
     if (this.operador_selecionado == "^" && this.segundo_elemento != "") {
       let aux_result = Math.pow(parseFloat(this.primeiro_elemento), parseFloat(this.segundo_elemento));
-      //this.memoria = this.primeiro_elemento + this.operador_selecionado;
       let base = this.primeiro_elemento;
       let expoent = this.segundo_elemento;
       this.memoria = `${base}<sup>${expoent}</sup>`;
@@ -262,7 +261,6 @@ enum Operadores {
 }
 
 enum Operadores_complexos {
-  // '^',
   '%',
   '+/-',
   '@',
