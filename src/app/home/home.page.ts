@@ -55,6 +55,10 @@ export class HomePage {
   }
 
   operador(valor: string) {
+    if(this.resultado == '0'){
+      return;
+    }
+
     const Operadores_obj = Object.values(Operadores);
     //criando um obj, pois nao consegui relacionar
     //as strings do enum, com a string do resultado
@@ -217,7 +221,7 @@ export class HomePage {
     }
     if (this.operador_selecionado == '@'){
       if(parseFloat(this.primeiro_elemento) === 0) {
-        this.memoria = "ERROR: Division by 0";
+        this.memoria = "ERROR: Divisão por 0";
         // this "fix" a weird bug, without it 'resultado' becomes '0@'' for some reason
         this.resultado = (0).toString(); 
         this.operador_unico = false;
