@@ -265,6 +265,3 @@ enum Operadores_complexos {
   '@',
   'sqr'
 }
-
-
-
