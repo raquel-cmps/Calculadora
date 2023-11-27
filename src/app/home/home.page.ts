@@ -220,6 +220,8 @@ export class HomePage {
         this.memoria = "ERROR: Division by 0";
         // this "fix" a weird bug, without it 'resultado' becomes '0@'' for some reason
         this.resultado = (0).toString(); 
+        this.operador_unico = false;
+        this.resultado_concluido = true;
         return;
       } else { 
         let aux_fracao = parseFloat(this.primeiro_elemento);
