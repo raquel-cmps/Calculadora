@@ -175,21 +175,20 @@ export class HomePage {
         return;
       }
     }
-  }
-
-  operacao_complexa() {
-    if (this.operador_selecionado == "^") {
-      let aux_expoente = parseFloat(this.primeiro_elemento);
-      this.resultado = Math.pow(aux_expoente, 2).toString();
+    if (this.operador_selecionado == "^" && this.segundo_elemento != "") {
+      let aux_result = Math.pow(parseFloat(this.primeiro_elemento), parseFloat(this.segundo_elemento));
       //this.memoria = this.primeiro_elemento + this.operador_selecionado;
-      let base = this.primeiro_elemento
-      let expoente = 2;
-      this.memoria = `${base}<sup>${expoente}</sup>`;
-      this.primeiro_elemento = this.resultado;
-      this.operador_unico = false;
+      let base = this.primeiro_elemento;
+      let expoent = this.segundo_elemento;
+      this.memoria = `${base}<sup>${expoent}</sup>`;
+      this.resultado = aux_result.toString();
       this.resultado_concluido = true;
+      this.operador_unico = false;
       return;
     }
+  }
+
+  operacao_complexa() {    
     if (this.operador_selecionado == "%") {
       let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
       this.resultado = aux_porcentagem.toString();
@@ -258,13 +257,12 @@ enum Operadores {
   '^',     // 4
   '%',     // 5
   '+/-',   // 6
-  // these two are not duplicate, leave it
   '@',     // 7
   'sqr',   // 8
 }
 
 enum Operadores_complexos {
-  '^',
+  // '^',
   '%',
   '+/-',
   '@',
