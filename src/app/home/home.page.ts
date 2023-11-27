@@ -254,6 +254,7 @@ enum Operadores {
   '^',     // 4
   '%',     // 5
   '+/-',   // 6
+  // these two are not duplicate, leave it
   '@',     // 7
   'sqr',   // 8
 }
