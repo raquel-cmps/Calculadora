@@ -162,6 +162,8 @@ export class HomePage {
     if (this.operador_selecionado == "/" && this.segundo_elemento != "") {
       if(parseFloat(this.segundo_elemento) === 0) {
         this.memoria = "ERROR: Division by 0";
+        this.resultado_concluido = false;
+        this.redefinirEntrada();
         return; 
       } else {
         let aux_divisao = (parseFloat(this.primeiro_elemento) / parseFloat(this.segundo_elemento))
