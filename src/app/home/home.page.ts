@@ -71,7 +71,7 @@ export class HomePage {
       //caso exista ele retorna a funcao, nao permitindo
       //a adicao de outro operador
     } else {
-      if (!this.checa_operador || this.verificacao_nova_operacao() == true) {
+      if (!this.checa_operador || this.verificacao_nova_operacao()) {
         this.operador_selecionado = valor;
         this.primeiro_elemento = this.resultado;
         this.resultado += valor;
@@ -102,7 +102,7 @@ export class HomePage {
   }
 
   redefinirEntrada() {
-    if(this.resultado != this.primeiro_elemento && this.resultado_concluido == false){
+    if(this.resultado != this.primeiro_elemento && !this.resultado_concluido){
       this.resultado = this.primeiro_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
@@ -121,7 +121,7 @@ export class HomePage {
       if(Operadores_obj.includes(this.resultado.charAt(this.resultado.length -1))){
         return;
       } else {
-        if(this.comeca_segundo_elemento = true && this.segundo_elemento != ''){
+        if(this.comeca_segundo_elemento && this.segundo_elemento != ''){
           this.segundo_elemento = this.segundo_elemento.slice(0, -1);
           this.resultado = this.resultado.slice(0, -1);
         } else {
