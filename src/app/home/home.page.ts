@@ -216,13 +216,20 @@ export class HomePage {
       return;
     }
     if (this.operador_selecionado == '@'){
-      let aux_fracao = parseFloat(this.primeiro_elemento);
-      this.resultado = (1 / aux_fracao).toString();
-      this.memoria = `<sup>1</sup>/<sub>${this.primeiro_elemento}</sub>`;
-      this.primeiro_elemento = this.resultado;
-      this.operador_unico = false;
-      this.resultado_concluido = true;
-      return;
+      if(parseFloat(this.primeiro_elemento) === 0) {
+        this.memoria = "ERROR: Division by 0";
+        // this "fix" a weird bug, without it 'resultado' becomes '0@'' for some reason
+        this.resultado = (0).toString(); 
+        return;
+      } else { 
+        let aux_fracao = parseFloat(this.primeiro_elemento);
+        this.resultado = (1 / aux_fracao).toString();
+        this.memoria = `<sup>1</sup>/<sub>${this.primeiro_elemento}</sub>`;
+        this.primeiro_elemento = this.resultado;
+        this.operador_unico = false;
+        this.resultado_concluido = true;
+        return;
+      }
     }
   }
 
