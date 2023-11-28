@@ -179,7 +179,6 @@ export class HomePage {
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
-      this.ponto_pressionado = true;
       return;
     }
     if (this.operador_selecionado == "-" && this.segundo_elemento != "") {
@@ -228,6 +227,35 @@ export class HomePage {
     }
   }
 
+  inversaoMod(){
+    if(!this.resultado_concluido){
+      if(this.comeca_segundo_elemento){
+        if(this.operador_selecionado == '+'){
+          this.operador_selecionado = '-';
+          this.resultado = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
+          this.operador_unico = false;
+          return;
+        }
+        if(this.operador_selecionado == '-'){
+          this.operador_selecionado = '+';
+          this.resultado = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
+          this.operador_unico = false;
+          return;
+        }
+      }else {
+        let aux = parseFloat(this.resultado);
+        this.resultado = (- aux).toString();
+        this.operador_unico = false;
+        return;
+      }
+    } else{
+        let aux = parseFloat(this.resultado);
+        this.resultado = (- aux).toString();
+        this.operador_unico = false;
+        return;
+    }
+  }
+
   operacao_complexa() {    
     if (this.operador_selecionado == "%") {
       let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
@@ -238,7 +266,8 @@ export class HomePage {
       this.resultado_concluido = true;
       return;
     }
-    if (this.operador_selecionado == "+/-") {
+    //esse operador foi retirado para permitir a que o segundo elemento tbm mude de sinal
+    /*if (this.operador_selecionado == "+/-") {
       let aux = parseFloat(this.primeiro_elemento);
       this.resultado = (- aux).toString();
       this.memoria = this.primeiro_elemento + this.operador_selecionado;
@@ -246,7 +275,7 @@ export class HomePage {
       this.operador_unico = false;
       this.resultado_concluido = true;
       return;
-    }
+    }*/
     if (this.operador_selecionado == 'sqr'){
       let aux_raizQuadrada = parseFloat(this.primeiro_elemento);
       this.resultado = Math.sqrt(aux_raizQuadrada).toString();
@@ -297,14 +326,14 @@ enum Operadores {
   '/',     // 3
   '^',     // 4
   '%',     // 5
-  '+/-',   // 6
+  //'+/-',   // 6
   '@',     // 7
   'sqr',   // 8
 }
 
 enum Operadores_complexos {
   '%',
-  '+/-',
+  //'+/-',
   '@',
   'sqr'
 }
