@@ -117,9 +117,9 @@ export class HomePage {
         //precisa resetar o segundo elemento
         //para que nao aconteca o bug de carregar digitos iguais
   
-        if (this.operador_selecionado in Operadores_complexos) {
+        /*if (this.operador_selecionado in Operadores_complexos) {
           this.operacao_complexa();
-        }
+        }*/
       }
     }
   }
@@ -264,51 +264,64 @@ export class HomePage {
     }
   }
 
-  operacao_complexa() {    
-    if (this.operador_selecionado == "%") {
-      let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
-      this.resultado = aux_porcentagem.toString();
-      this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
-      this.primeiro_elemento = this.resultado;
-      this.operador_unico = false;
-      this.resultado_concluido = true;
+  operacao_complexa(valor : string) { 
+    if(this.operador_selecionado != '' && !this.resultado_concluido){
       return;
-    }
-    //esse operador foi retirado para permitir a que o segundo elemento tbm mude de sinal
-    /*if (this.operador_selecionado == "+/-") {
-      let aux = parseFloat(this.primeiro_elemento);
-      this.resultado = (- aux).toString();
-      this.memoria = this.primeiro_elemento + this.operador_selecionado;
+    } else{
+      this.operador_selecionado = valor;
       this.primeiro_elemento = this.resultado;
-      this.operador_unico = false;
-      this.resultado_concluido = true;
-      return;
-    }*/
-    if (this.operador_selecionado == 'sqr'){
-      let aux_raizQuadrada = parseFloat(this.primeiro_elemento);
-      this.resultado = Math.sqrt(aux_raizQuadrada).toString();
-      this.memoria = `&#8730;${this.primeiro_elemento}`;
-      this.primeiro_elemento = this.resultado;
-      this.operador_unico = false;
-      this.resultado_concluido = true;
-      return;
-    }
-    if (this.operador_selecionado == '@'){
-      if(parseFloat(this.primeiro_elemento) === 0) {
-        this.memoria = "ERROR: Divisão por 0";
-        // this "fix" a weird bug, without it 'resultado' becomes '0@'' for some reason
-        this.resultado = (0).toString(); 
+      this.resultado += valor;
+      this.checa_operador = true;
+      this.comeca_segundo_elemento = true;
+      this.operador_unico = true;
+
+      this.segundo_elemento = '';
+      
+      if (this.operador_selecionado == "%") {
+        let aux_porcentagem = (parseFloat(this.primeiro_elemento) / 100.00);
+        this.resultado = aux_porcentagem.toString();
+        this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
+        this.primeiro_elemento = this.resultado;
         this.operador_unico = false;
         this.resultado_concluido = true;
-        return;
-      } else { 
-        let aux_fracao = parseFloat(this.primeiro_elemento);
-        this.resultado = (1 / aux_fracao).toString();
-        this.memoria = `<sup>1</sup>/<sub>${this.primeiro_elemento}</sub>`;
+        return this.resultado;
+      }
+      //esse operador foi retirado para permitir a que o segundo elemento tbm mude de sinal
+      /*if (this.operador_selecionado == "+/-") {
+        let aux = parseFloat(this.primeiro_elemento);
+        this.resultado = (- aux).toString();
+        this.memoria = this.primeiro_elemento + this.operador_selecionado;
         this.primeiro_elemento = this.resultado;
         this.operador_unico = false;
         this.resultado_concluido = true;
         return;
+      }*/
+      if (this.operador_selecionado == 'sqr'){
+        let aux_raizQuadrada = parseFloat(this.primeiro_elemento);
+        this.resultado = Math.sqrt(aux_raizQuadrada).toString();
+        this.memoria = `&#8730;${this.primeiro_elemento}`;
+        this.primeiro_elemento = this.resultado;
+        this.operador_unico = false;
+        this.resultado_concluido = true;
+        return this.resultado;
+      }
+      if (this.operador_selecionado == '@'){
+        if(parseFloat(this.primeiro_elemento) === 0) {
+          this.memoria = "ERROR: Divisão por 0";
+          // this "fix" a weird bug, without it 'resultado' becomes '0@'' for some reason
+          this.resultado = (0).toString(); 
+          this.operador_unico = false;
+          this.resultado_concluido = true;
+          return this.resultado;
+        } else { 
+          let aux_fracao = parseFloat(this.primeiro_elemento);
+          this.resultado = (1 / aux_fracao).toString();
+          this.memoria = `<sup>1</sup>/<sub>${this.primeiro_elemento}</sub>`;
+          this.primeiro_elemento = this.resultado;
+          this.operador_unico = false;
+          this.resultado_concluido = true;
+          return this.resultado;
+        }
       }
     }
   }
