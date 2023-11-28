@@ -17,6 +17,7 @@ export class HomePage {
   operador_selecionado: string = '';
   memoria: string = '';
   operador_unico: boolean = false;
+  ponto_pressionado: boolean = false;
 
 
   constructor() { }
@@ -43,7 +44,7 @@ export class HomePage {
       if (this.comeca_segundo_elemento) {
         //preencher o segundo elemento
         this.segundo_elemento = this.segundo_elemento + valor;
-        this.resultado = this.resultado + valor;
+        this.resultado += valor;
       } else {
         if (this.resultado == "0") {
           this.resultado = valor;
@@ -54,7 +55,36 @@ export class HomePage {
     }
   }
 
+  ponto(){
+    if(this.ponto_pressionado){
+      return;
+    }else {
+      if(this.resultado == "0" ){
+        this.digito('0.');
+        this.ponto_pressionado = true;
+      } else{
+        if(this.primeiro_elemento != '0' && !this.comeca_segundo_elemento){
+          this.digito('.');
+          this.ponto_pressionado = true;
+        }else{
+          if(this.comeca_segundo_elemento){
+            this.ponto_pressionado = false;
+            if(this.segundo_elemento == ''){
+              this.digito('0.');
+              this.ponto_pressionado = true;
+            }else{
+              this.digito('.');
+              this.ponto_pressionado = true;
+            }
+          } 
+        }
+      }
+    }
+  }
+
   operador(valor: string) {
+    this.ponto_pressionado = false;
+
     if(this.resultado == '0'){
       return;
     }
@@ -103,6 +133,7 @@ export class HomePage {
     this.comeca_segundo_elemento = false;
     this.memoria = '';
     this.operador_unico = false;
+    this.ponto_pressionado = false;
   }
 
   redefinirEntrada() {
@@ -110,6 +141,7 @@ export class HomePage {
       this.resultado = this.primeiro_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
+      this.ponto_pressionado = false;
       this.segundo_elemento = '';
     } else {
       this.redefinir();
@@ -118,6 +150,10 @@ export class HomePage {
 
   deletar(){
     const Operadores_obj = Object.values(Operadores);
+
+    if(this.resultado.charAt(this.resultado.length -1) == '.'){
+      this.ponto_pressionado = false;
+    }
 
     if(this.resultado_concluido){
       return;
@@ -143,6 +179,7 @@ export class HomePage {
       this.memoria = this.primeiro_elemento + this.operador_selecionado + this.segundo_elemento;
       this.resultado_concluido = true;
       this.operador_unico = false;
+      this.ponto_pressionado = true;
       return;
     }
     if (this.operador_selecionado == "-" && this.segundo_elemento != "") {
@@ -245,6 +282,7 @@ export class HomePage {
       //ou seja, ele que incrementar o resultado
       this.resultado_concluido = false;
       this.segundo_elemento = '';
+      this.ponto_pressionado = false;
       return true;
     }
     return false;
