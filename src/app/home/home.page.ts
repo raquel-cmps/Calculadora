@@ -156,8 +156,12 @@ export class HomePage {
     }
 
     if(this.resultado_concluido){
+      this.redefinir();
       return;
     } else {
+      if(this.resultado == '0'){
+        return;
+      }
       if(Operadores_obj.includes(this.resultado.charAt(this.resultado.length -1))){
         return;
       } else {
@@ -165,7 +169,11 @@ export class HomePage {
           this.segundo_elemento = this.segundo_elemento.slice(0, -1);
           this.resultado = this.resultado.slice(0, -1);
         } else {
-          this.resultado = this.resultado.slice(0, -1);
+          if(this.resultado.length == 1){
+            this.resultado = '0';
+          }else{
+            this.resultado = this.resultado.slice(0, -1);
+          }
         }
       }
     }
